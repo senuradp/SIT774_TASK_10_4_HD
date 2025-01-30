@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HoopKicks - Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet"> 
+    <style>
+
+        .carousel-item img {
+            object-fit: cover;
+            height: 500px;
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+            transition: transform 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        .scroll-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            display: none;
+            z-index: 1000;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            padding: 10px 15px;
+            font-size: 18px;
+            cursor: pointer;
+        }
+
+        /* greeting bar*/
+        .greeting-bar {
+            background-color: #007bff;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        
+        <%- include('components/navbar'); %>
+
+        <div class="greeting-bar" id="greetingBar">
+            <!-- greeting message will be inserted here -->
+        </div>
+
+        <!-- Hero Carousel -->
+        <div id="heroCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div class="carousel-item active">
+                    <img src="./images/banner_1.jpg" class="d-block w-100" alt="Sneakers Banner" width="1920"
+                        height="500" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>Welcome to HoopKicks</h1>
+                        <p>
+                            Discover premium basketball sneakers designed for performance
+                            and style.
+                        </p>
+                        <a href="shop.html" class="btn btn-primary btn-lg">Shop Now</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./images/banner_2.jpg" class="d-block w-100" alt="Latest Collection" width="1920"
+                        height="500" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>Latest Collections</h1>
+                        <p>Stay ahead with our newest arrivals.</p>
+                        <a href="shop.html" class="btn btn-primary btn-lg">Explore</a>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <img src="./images/banner_3.jpg" class="d-block w-100" alt="Best Deals" width="1920" height="500" />
+                    <div class="carousel-caption d-none d-md-block">
+                        <h1>Unbeatable Deals</h1>
+                        <p>Get your favorite sneakers at the best prices.</p>
+                        <a href="shop.html" class="btn btn-primary btn-lg">Grab Now</a>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Featured Products -->
+        <div class="container my-5">
+            <h2 class="text-center mb-4">Featured Products</h2>
+            <div class="row row-cols-1 row-cols-md-3 g-4">
+                <div class="col">
+                    <div class="card feature-card">
+                        <img src="./images/sneaker_1.jpg" class="card-img-top" alt="Sneaker A" width="300"
+                            height="200" />
+                        <div class="card-body">
+                            <h5 class="card-title">Sneaker A</h5>
+                            <p class="card-text">
+                                High-performance basketball shoe designed for the court.
+                            </p>
+                            <a href="shop.html" class="btn btn-primary">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card feature-card">
+                        <img src="./images/sneaker_2.jpg" class="card-img-top" alt="Sneaker B" width="300"
+                            height="200" />
+                        <div class="card-body">
+                            <h5 class="card-title">Sneaker B</h5>
+                            <p class="card-text">
+                                Stylish and comfortable sneakers for any occasion.
+                            </p>
+                            <a href="shop.html" class="btn btn-primary">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card feature-card">
+                        <img src="./images/sneaker_3.jpg" class="card-img-top" alt="Sneaker C" width="300"
+                            height="200" />
+                        <div class="card-body">
+                            <h5 class="card-title">Sneaker C</h5>
+                            <p class="card-text">
+                                Engineered for speed, agility, and durability on court.
+                            </p>
+                            <a href="shop.html" class="btn btn-primary">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('components/footer'); %>
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" id="scrollTopBtn">
+        <i class="bi bi-arrow-up"></i>
+    </button>
+
+    <script>
+
+        function getGreeting() {
+            const token = localStorage.getItem("authToken");
+            if (!token) {
+                return "Welcome to HoopKicks!";
+            }
+            try {
+                const decodedToken = JSON.parse(atob(token.split(".")[1]));
+                const userName = decodedToken.name;
+                const now = new Date();
+                const hour = now.getHours();
+                let greeting;
+                if (hour < 12) greeting = `Good Morning, ${userName}! Start your day with HoopKicks!!`;
+                else if (hour < 18) greeting = `Good Afternoon, ${userName}! Enjoy your day with HoopKicks!!`;
+                else greeting = `Good Evening, ${userName}! Have a great night with HoopKicks!!`;
+                return greeting;
+            } catch (error) {
+                return "Welcome to HoopKicks!";
+            }
+        }
+        console.log(getGreeting());
+        document.getElementById("greetingBar").textContent = getGreeting();
+
+        // scroll to top Button
+        const scrollTopBtn = document.getElementById("scrollTopBtn");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 300) {
+                scrollTopBtn.style.display = "block";
+            } else {
+                scrollTopBtn.style.display = "none";
+            }
+        });
+        scrollTopBtn.addEventListener("click", () => {
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

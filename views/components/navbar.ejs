@@ -1,0 +1,45 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm">
+    <div class="container">
+        <a class="navbar-brand" href="/">HoopKicks</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a class="nav-link active" href="/">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="/shop">Shop</a></li>
+                <li class="nav-item"><a class="nav-link" href="/news">News</a></li>
+                <li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+                <li class="nav-item"><a class="nav-link" href="/feedback">Feedback</a></li>
+                <li class="nav-item">
+                    <a id="authLink" class="nav-link" href="/login">Login</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+<script>
+    function updateAuthNav() {
+        const authLink = document.getElementById("authLink");
+        const token = localStorage.getItem("authToken");
+
+        if (token) {
+            try {
+                const decodedToken = JSON.parse(atob(token.split(".")[1]));
+                authLink.textContent = `Profile (${decodedToken.name})`;
+                authLink.href = "/profile";
+            } catch (error) {
+                console.error("Error getting token:", error);
+                localStorage.removeItem("authToken");
+            }
+        } else {
+            authLink.textContent = "Login";
+            authLink.href = "/login";
+        }
+    }
+
+    updateAuthNav();
+</script>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>News - HoopKicks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet"> 
+    <style>
+        .card {
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.03);
+        }
+
+        #newsModalImage {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <%- include('components/navbar'); %>
+    </header>
+
+    <main class="mb-4">
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">Latest News</h1>
+
+            <!-- Release News -->
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                    <div class="card">
+                        <img src="./images/news_1.jpg" class="card-img-top" alt="New Sneaker Release" width="400"
+                            height="300" />
+                        <div class="card-body">
+                            <h5 class="card-title">New Sneaker Release</h5>
+                            <p class="card-text">Check out the latest model for basketball players.</p>
+                            <button class="btn btn-primary read-more-btn" data-title="New Sneaker Release"
+                                data-details="Experience unparalleled performance and style with our newest basketball sneaker release. Designed for players who demand the best."
+                                data-image="./images/news_1.jpg">
+                                Read More</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col">
+                    <div class="card">
+                        <img src="./images/news_2.jpg" class="card-img-top" alt="Upcoming Trends" width="400"
+                            height="300" />
+                        <div class="card-body">
+                            <h5 class="card-title">Upcoming Trends</h5>
+                            <p class="card-text">Discover upcoming basketball sneaker trends.</p>
+                            <button class="btn btn-primary read-more-btn" data-title="Upcoming Trends"
+                                data-details="Stay ahead in the game by exploring the latest trends in basketball sneakers. From bold designs to cutting-edge materials, find out what's hot this season."
+                                data-image="./images/news_2.jpg">
+                                Read More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="my-4" />
+
+            <h1 class="text-center mb-4">Sneaker Releases</h1>
+            <!-- Article News -->
+            <div class="row row-cols-1 row-cols-md-2 g-4">
+                <div class="col">
+                    <div class="card">
+                        <img src="./images/news_3.jpg" class="card-img-top" alt="The Evolution of Sneakers" width="400"
+                            height="300" />
+                        <div class="card-body">
+                            <h5 class="card-title">The Evolution of Sneakers</h5>
+                            <p class="card-text">A deep dive into how basketball sneakers have changed over the years.
+                            </p>
+                            <button class="btn btn-primary read-more-btn" data-title="The Evolution of Sneakers"
+                                data-details="Discover the history and evolution of basketball sneakers, from their early beginnings to modern-day innovations. Learn how they've shaped the game and style."
+                                data-image="./images/news_3.jpg">
+                                Read More</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="card">
+                        <img src="./images/news_4.jpg" class="card-img-top" alt="Best Sneakers for Performance"
+                            width="400" height="300" />
+                        <div class="card-body">
+                            <h5 class="card-title">Best Sneakers for Performance</h5>
+                            <p class="card-text">Our pick of the top-performing sneakers on the market.</p>
+                            <button class="btn btn-primary read-more-btn" data-title="Best Sneakers for Performance"
+                                data-details="Explore our list of top-performing sneakers that combine comfort, durability, and style. Perfect for athletes and enthusiasts alike."
+                                data-image="./images/news_4.jpg">
+                                Read More</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- news modal popup component -->
+    <%- include('components/newsModal'); %>
+
+
+    <%- include('components/footer'); %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const readMoreButtons = document.querySelectorAll(".read-more-btn");
+            const modalTitle = document.getElementById("newsModalTitle");
+            const modalBody = document.getElementById("newsModalBody");
+            const modalImage = document.getElementById("newsModalImage");
+            const newsModal = new bootstrap.Modal(document.getElementById("newsModal"));
+    
+            readMoreButtons.forEach(button => {
+                button.addEventListener("click", () => {
+                    const title = button.getAttribute("data-title");
+                    const details = button.getAttribute("data-details");
+                    const image = button.getAttribute("data-image");
+    
+                    modalTitle.textContent = title;
+                    modalBody.textContent = details;
+                    modalImage.src = image;
+    
+                    newsModal.show();
+                });
+            });
+        });
+    </script>
+    
+</body>
+
+</html>

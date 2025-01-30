@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Jordan 1 Chicago Bulls Low - HoopKicks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/styles.css" rel="stylesheet"> 
+    <style>
+
+        .product-section {
+            padding: 20px;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .product-image {
+            max-height: 450px;
+            object-fit: cover;
+        }
+
+        .more-products .card {
+            transition: transform 0.3s ease;
+        }
+
+        .more-products .card:hover {
+            transform: scale(1.05);
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <%- include('components/navbar'); %>
+    </header>
+
+    <main>
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">Air Jordan 1 Chicago Bulls Low</h1>
+
+            <!-- products Section -->
+            <div class="product-section shadow-sm mb-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <img src="./images/sneaker_7.jpg" class="img-fluid rounded product-image"
+                            alt="Air Jordan 1 Chicago Bulls Low">
+                    </div>
+                    <div class="col-md-6">
+                        <h3>Air Jordan 1 Chicago Bulls Low</h3>
+                        <p class="text-muted">Brand: Nike</p>
+                        <h4>$149.99</h4>
+                        <p>
+                            The Air Jordan 1 Chicago Bulls Low celebrates the iconic colors of the Chicago Bulls with a
+                            sleek and low-cut design. Perfect for casual wear or dominating the basketball court, this
+                            sneaker combines style, performance, and heritage.
+                        </p>
+                        <button class="btn btn-primary">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- product details -->
+            <div class="shadow-sm p-4 bg-light rounded mb-5">
+                <h4>Product Specifications</h4>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Specification</th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Color</td>
+                            <td>Red/Black/White</td>
+                        </tr>
+                        <tr>
+                            <td>Size</td>
+                            <td>7, 8, 9, 10, 11, 12</td>
+                        </tr>
+                        <tr>
+                            <td>Material</td>
+                            <td>Premium Leather</td>
+                        </tr>
+                        <tr>
+                            <td>Weight</td>
+                            <td>500g</td>
+                        </tr>
+                        <tr>
+                            <td>Release Date</td>
+                            <td>March 2025</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Additional Details -->
+
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <h5>Weight</h5>
+                    <p>500g</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Release Date</h5>
+                    <p>March 2025</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Available Colors</h5>
+                    <ul>
+                        <li>Red</li>
+                        <li>Black</li>
+                        <li>White</li>
+                    </ul>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sneaker info  -->
+            <div class="row mb-4">
+                <div class="col-md-4">
+                    <h5>Sneaker Care Tips</h5>
+                    <ul>
+                        <li>Clean with a damp cloth after each use.</li>
+                        <li>Store in a cool, dry place away from direct sunlight.</li>
+                        <li>Use sneaker protectors to keep them looking fresh longer.</li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4">
+                    <h5>Why Choose This?</h5>
+                    <p><strong>Comfort:</strong> Designed for all-day wear with soft cushioning and breathable
+                        materials.</p>
+                    <p><strong>Durability:</strong> Built with high-quality leather for long-lasting use.</p>
+                    <p><strong>Style:</strong> Sleek design that goes well with any casual or sporty outfit.</p>
+                </div>
+
+                <div class="col-md-4">
+                    <h5>Features</h5>
+                    <ul>
+                        <li>Lightweight construction for comfort and mobility.</li>
+                        <li>Rubber sole for superior traction and grip.</li>
+                        <li>Available in multiple colors and sizes to suit every preference.</li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <!-- Review Form -->
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <h5>Write Your Review</h5>
+                    <form>
+                        <div class="mb-3">
+                            <label for="reviewerName" class="form-label">Your Name</label>
+                            <input type="text" class="form-control" id="reviewerName" placeholder="Enter your name"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="reviewText" class="form-label">Your Review</label>
+                            <textarea class="form-control" id="reviewText" rows="4" placeholder="Write your review here"
+                                required></textarea>
+                        </div>
+                        <div class="mb-3">
+                            <label for="reviewRating" class="form-label">Rating</label>
+                            <select class="form-select" id="reviewRating" required>
+                                <option value="" disabled selected>Select Rating</option>
+                                <option value="5">5 stars</option>
+                                <option value="4">4 stars</option>
+                                <option value="3">3 stars</option>
+                                <option value="2">2 stars</option>
+                                <option value="1">1 star</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Review</button>
+                    </form>
+                </div>
+            </div>
+
+            <!-- More Products Section -->
+            <div class="more-products">
+                <h3 class="mb-4">You May Also Like</h3>
+                <div class="row row-cols-1 row-cols-md-4 g-4">
+
+                    <div class="col">
+                        <div class="card">
+                            <img src="./images/sneaker_2.jpg" class="card-img-top" alt="Product 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Air Jordan 2</h5>
+                                <p class="card-text">$129.99</p>
+                                <button class="btn btn-outline-primary">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <img src="./images/sneaker_3.jpg" class="card-img-top" alt="Product 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Nike Dunk Low</h5>
+                                <p class="card-text">$139.99</p>
+                                <button class="btn btn-outline-primary">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <img src="./images/sneaker_4.jpg" class="card-img-top" alt="Product 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Adidas Yeezy</h5>
+                                <p class="card-text">$159.99</p>
+                                <button class="btn btn-outline-primary">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col">
+                        <div class="card">
+                            <img src="./images/sneaker_5.jpg" class="card-img-top" alt="Product 4">
+                            <div class="card-body">
+                                <h5 class="card-title">Puma RS-X</h5>
+                                <p class="card-text">$169.99</p>
+                                <button class="btn btn-outline-primary">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('components/footer'); %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

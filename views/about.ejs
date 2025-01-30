@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - HoopKicks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet"> 
+    <style>
+
+        .hero-section {
+            background: linear-gradient(to right, #007bff, #6610f2);
+            color: white;
+            padding: 60px 0;
+        }
+
+        .hero-section h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        .hero-section p {
+            font-size: 1.2rem;
+        }
+
+        .about-us-section {
+            margin-top: 40px;
+        }
+
+        .about-us-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .team-member img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .team-member h5 {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <%- include('components/navbar'); %>
+
+        <!-- Hero Section -->
+        <div class="hero-section text-center">
+            <h1>Welcome to HoopKicks</h1>
+            <p>Your one-stop shop for basketball sneakers, gear, and accessories.</p>
+        </div>
+    </header>
+
+    <main>
+        <!-- About Us Section -->
+        <div class="container about-us-section">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h2>Who We Are</h2>
+                    <p>
+                        At HoopKicks, we are passionate about providing basketball
+                        enthusiasts with the best footwear and gear. Whether you're an
+                        amateur player or a seasoned pro, we offer top-of-the-line sneakers
+                        and accessories to enhance your performance on and off the court.
+                    </p>
+                    <p>
+                        Founded by a group of dedicated basketball players, we understand
+                        the importance of comfort, style, and durability in every pair of
+                        sneakers. Our mission is simple: to deliver the highest-quality
+                        products that cater to the needs of the basketball community.
+                    </p>
+                </div>
+                <div class="col-lg-6">
+                    <img src="./images/about.jpg" alt="Founder" class="img-fluid rounded shadow-sm" width="600" height="400"/>
+                </div>
+            </div>
+        </div>
+
+        <!-- Our Founder Section -->
+        <div class="container about-us-section">
+            <h2>Meet Our Founder</h2>
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <img src="./images/founder.jpg" alt="John Doe" class="img-fluid rounded-circle shadow-sm" width="300"/>
+                </div>
+                <div class="col-md-8">
+                    <h5>Senura Perera</h5>
+                    <p><strong>Founder & CEO</strong></p>
+                    <p>
+                        With over 7 years of basketball experience, Senura leads HoopKicks
+                        with passion and expertise, ensuring that our products meet the
+                        highest standards. His dedication to the basketball community drives
+                        the vision of creating the best sneakers for performance and style.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('components/footer'); %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

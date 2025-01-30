@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - HoopKicks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet"> 
+    <style>
+        .contact-info {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .social-icons a {
+            font-size: 1.5rem;
+            color: #555;
+            margin-right: 15px;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #007bff;
+        }
+
+        iframe {
+            border: none;
+            border-radius: 8px;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 0.9rem;
+        }
+
+        .success-message {
+            color: green;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <%- include('components/navbar'); %>
+    </header>
+
+    <main>
+        <div class="container mt-5">
+            <h1 class="text-center mb-4">Contact Us</h1>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="contact-info shadow-sm pb-5">
+                        <h3>Contact Information</h3>
+                        <p><strong>Email:</strong> <a class="text-decoration-none text-dark"
+                                href="mailto:support@hoopkicks.com">support@hoopkicks.com</a></p>
+                        <p><strong>Phone:</strong> <a class="text-decoration-none text-dark" href="tel:+61433946491">043
+                                394 6491</a></p>
+                        <p><strong>Address:</strong> 123 Basketball Avenue, Hoop City</p>
+                        <div class="social-icons">
+                            <h5>Follow Us</h5>
+                            <a href="#"><i class="bi bi-instagram"></i></a>
+                            <a href="#"><i class="bi bi-facebook"></i></a>
+                            <a href="#"><i class="bi bi-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6300.757373610797!2d145.10979217608434!3d-37.85142887196614!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad6405c561fea7d%3A0x374a29b5d599759b!2s17%20McComas%20Grove%2C%20Burwood%20VIC%203125!5e0!3m2!1sen!2sau!4v1736991943892!5m2!1sen!2sau"
+                        width="100%" height="300" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+
+            <hr class="my-5" />
+
+            <!-- Contact Form -->
+            <div class="shadow-sm p-4 bg-light rounded">
+                <h3>Get in Touch</h3>
+                <form id="contactForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your full name" />
+                        <div class="error-message" id="nameError"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" />
+                        <div class="error-message" id="emailError"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Phone Number</label>
+                        <input type="text" class="form-control" id="phone" placeholder="Enter your phone number" />
+                        <div class="error-message" id="phoneError"></div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="4" placeholder="Your message"></textarea>
+                        <div class="error-message" id="messageError"></div>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" id="submitButton">Send Message</button>
+                    <div class="success-message" id="successMessage"></div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <%- include('components/footer'); %>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById("submitButton").addEventListener("click", function () {
+            // Clear previous error messages
+            document.getElementById("nameError").textContent = "";
+            document.getElementById("emailError").textContent = "";
+            document.getElementById("phoneError").textContent = "";
+            document.getElementById("messageError").textContent = "";
+            document.getElementById("successMessage").textContent = "";
+
+            // Get form values
+            const name = document.getElementById("name").value.trim();
+            const email = document.getElementById("email").value.trim();
+            const phone = document.getElementById("phone").value.trim();
+            const message = document.getElementById("message").value.trim();
+
+            // Validation flags
+            let isValid = true;
+
+            // Validate Name
+            if (!name) {
+                document.getElementById("nameError").textContent = "Name is required.";
+                isValid = false;
+            }
+
+            // Validate Email
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email) {
+                document.getElementById("emailError").textContent = "Email is required.";
+                isValid = false;
+            } else if (!emailPattern.test(email)) {
+                document.getElementById("emailError").textContent = "Please use a valid email address.";
+                isValid = false;
+            }
+
+            // Validate Phone
+            const phonePattern = /^\d{10}$/;
+            if (!phone) {
+                document.getElementById("phoneError").textContent = "Phone number is required.";
+                isValid = false;
+            } else if (!phonePattern.test(phone)) {
+                document.getElementById("phoneError").textContent = "Phone number must be numeric and 10 digits.";
+                isValid = false;
+            }
+
+            // Validate Message
+            if (!message) {
+                document.getElementById("messageError").textContent = "Message is required.";
+                isValid = false;
+            }
+
+            // Success Message
+            if (isValid) {
+                document.getElementById("successMessage").textContent = "Your message has been sent successfully!";
+                document.getElementById("contactForm").reset();
+            }
+        });
+    </script>
+</body>
+
+</html>

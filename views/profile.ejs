@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - HoopKicks</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.5/axios.min.js"></script>
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <%- include('components/navbar'); %>
+    </header>
+
+    <main class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card shadow-lg p-4">
+                    <div class="card-body text-center">
+                        <h2>My Profile</h2>
+                        <img id="profilePicture" class="rounded-circle my-3" width="120" height="120" alt="Profile Picture">
+                        <h4 id="userName"></h4>
+                        <p id="userEmail" class="text-muted"></p>
+
+                        <hr>
+                        <p><strong>Phone:</strong> <span id="userPhone"></span></p>
+                        <p><strong>Address:</strong> <span id="userAddress"></span></p>
+                        <p><strong>Date of Birth:</strong> <span id="userDOB"></span></p>
+
+                        <hr>
+                        <button class="btn btn-danger" id="logoutBtn">Logout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <%- include('components/footer'); %>
+
+    <script>
+        async function loadProfile() {
+            const token = localStorage.getItem("authToken");
+
+            if (!token) {
+                window.location.href = "/login";
+                return;
+            }
+
+            try {
+                const response = await fetch("/user-profile", {
+                    method: "GET",
+                    headers: { "Authorization": "Bearer " + token }
+                });
+
+                if (!response.ok) {
+                    throw new Error("Failed to load profile.");
+                }
+
+                const user = await response.json();
+
+                document.getElementById("profilePicture").src = user.profile_picture || "/images/default-avatar.png";
+                document.getElementById("userName").textContent = user.name;
+                document.getElementById("userEmail").textContent = user.email;
+                document.getElementById("userPhone").textContent = user.phone;
+                document.getElementById("userAddress").textContent = user.address;
+                document.getElementById("userDOB").textContent = user.dob;
+
+            } catch (error) {
+                console.error("Profile Error:", error);
+                window.location.href = "/login";
+            }
+        }
+
+        function logoutUser() {
+            localStorage.removeItem("authToken");
+            window.location.href = "/login";
+        }
+
+        document.getElementById("logoutBtn").addEventListener("click", logoutUser);
+
+        loadProfile();
+    </script>
+</body>
+</html>
